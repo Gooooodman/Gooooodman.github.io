@@ -271,7 +271,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/03/01/url报警流程/" itemprop="url">URL监控与报警</a></h1>
+                <a class="post-title-link" href="/2020/03/01/url报警流程/" itemprop="url">项目中应用check监控与报警</a></h1>
         
 
         <div class="post-meta">
@@ -344,7 +344,23 @@
 
       
         
-          <h2 id="URL监控与报警"><a href="#URL监控与报警" class="headerlink" title="URL监控与报警"></a>URL监控与报警</h2><h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p><img src="http://image.rinkgame.com/blog/20200301/p3T3YXf7S7Dp.png?imageslim" alt="mark"></p>
+          <h4 id="使用工具："><a href="#使用工具：" class="headerlink" title="使用工具："></a>使用工具：</h4><ol>
+<li><p><a href="https://github.com/urlooker" target="_blank" rel="noopener">urlooker</a>   监控web服务可用性及访问质量，采用go语言编写，易于安装和二次开发</p>
+</li>
+<li><p><a href="https://prometheus.io/" target="_blank" rel="noopener">prometheus</a> 开源监控告警解决方案</p>
+</li>
+<li><p><a href="https://www.elastic.co/cn/" target="_blank" rel="noopener">Elasticsearch</a> 一个分布式、高扩展、高实时的搜索与数据分析引擎</p>
+</li>
+<li><p>运维平台  提供监控数据与接收prometheus报警并通知相关项目内成员</p>
+</li>
+</ol>
+<h4 id="采集urlooker客户端"><a href="#采集urlooker客户端" class="headerlink" title="采集urlooker客户端"></a>采集urlooker客户端</h4><p>urlooker-agent  - 进行了二次开发</p>
+<h5 id="加入功能"><a href="#加入功能" class="headerlink" title="加入功能"></a>加入功能</h5><ol>
+<li>探测url错误信息给 es</li>
+<li>生成prometheus 模板 </li>
+<li>从运维平台获取数据</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">promhttp_metric_urlooker_respon_time&#123;InstanceRegion=<span class="string">"&#123;&#123; .InstanceRegion&#125;&#125;"</span>, QuestIP=<span class="string">"&#123;&#123; .QuestIP&#125;&#125;"</span>, ProbeTarget=<span class="string">"&#123;&#123; .ProbeTarget&#125;&#125;"</span>, sid=<span class="string">"&#123;&#123; .Sid&#125;&#125;"</span>, url=<span class="string">"&#123;&#123; .Target&#125;&#125;"</span>,Domain=<span class="string">"&#123;&#123; .Domain&#125;&#125;"</span>,Project=<span class="string">"&#123;&#123; .Project&#125;&#125;"</span>,Tables=<span class="string">"&#123;&#123; .Tables&#125;&#125;"</span> &#125; &#123;&#123; .RespTime&#125;&#125;</span><br><span class="line"></span><br><span class="line">promhttp_metric_urlooker_status_code&#123;InstanceRegion=<span class="string">"&#123;&#123; .InstanceRegion&#125;&#125;"</span>, QuestIP=<span class="string">"&#123;&#123; .QuestIP&#125;&#125;"</span>, ProbeTarget=<span class="string">"&#123;&#123; .ProbeTarget&#125;&#125;"</span>, sid=<span class="string">"&#123;&#123; .Sid&#125;&#125;"</span>, url=<span class="string">"&#123;&#123; .Target&#125;&#125;"</span>,Domain=<span class="string">"&#123;&#123; .Domain&#125;&#125;"</span>,Project=<span class="string">"&#123;&#123; .Project&#125;&#125;"</span>,Tables=<span class="string">"&#123;&#123; .Tables&#125;&#125;"</span> &#125; &#123;&#123; .RespCode&#125;&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/03/01/url报警流程/#more" rel="contents">

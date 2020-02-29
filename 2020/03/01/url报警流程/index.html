@@ -79,21 +79,25 @@
 
 
 
-<meta name="description" content="URL监控与报警流程">
+<meta name="description" content="使用工具： urlooker   监控web服务可用性及访问质量，采用go语言编写，易于安装和二次开发  prometheus 开源监控告警解决方案  Elasticsearch 一个分布式、高扩展、高实时的搜索与数据分析引擎  运维平台  提供监控数据与接收prometheus报警并通知相关项目内成员   采集urlooker客户端urlooker-agent  - 进行了二次开发 加入功能 探">
 <meta name="keywords" content="urlooker,prometheus">
 <meta property="og:type" content="article">
-<meta property="og:title" content="URL监控与报警">
+<meta property="og:title" content="项目中应用check监控与报警">
 <meta property="og:url" content="http://blog.g5od.com/2020/03/01/url报警流程/index.html">
 <meta property="og:site_name" content="GooooodMorning">
-<meta property="og:description" content="URL监控与报警流程">
+<meta property="og:description" content="使用工具： urlooker   监控web服务可用性及访问质量，采用go语言编写，易于安装和二次开发  prometheus 开源监控告警解决方案  Elasticsearch 一个分布式、高扩展、高实时的搜索与数据分析引擎  运维平台  提供监控数据与接收prometheus报警并通知相关项目内成员   采集urlooker客户端urlooker-agent  - 进行了二次开发 加入功能 探">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://image.rinkgame.com/blog/20200229/OtU6z3yVcSUt.png?imageslim">
+<meta property="og:image" content="http://image.rinkgame.com/blog/20200301/nYKTcYeqIm5c.png?imageslim">
 <meta property="og:image" content="http://image.rinkgame.com/blog/20200301/p3T3YXf7S7Dp.png?imageslim">
 <meta property="og:image" content="http://image.rinkgame.com/blog/20200301/CqFRqLxAcOnH.png?imageslim">
-<meta property="og:updated_time" content="2020-02-29T09:17:34.240Z">
+<meta property="og:image" content="http://image.rinkgame.com/blog/20200301/SLeL31XORYVR.png?imageslim">
+<meta property="og:image" content="http://image.rinkgame.com/blog/20200301/TJnQHzF8K2Qa.png?imageslim">
+<meta property="og:updated_time" content="2020-02-29T11:23:37.748Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="URL监控与报警">
-<meta name="twitter:description" content="URL监控与报警流程">
-<meta name="twitter:image" content="http://image.rinkgame.com/blog/20200301/p3T3YXf7S7Dp.png?imageslim">
+<meta name="twitter:title" content="项目中应用check监控与报警">
+<meta name="twitter:description" content="使用工具： urlooker   监控web服务可用性及访问质量，采用go语言编写，易于安装和二次开发  prometheus 开源监控告警解决方案  Elasticsearch 一个分布式、高扩展、高实时的搜索与数据分析引擎  运维平台  提供监控数据与接收prometheus报警并通知相关项目内成员   采集urlooker客户端urlooker-agent  - 进行了二次开发 加入功能 探">
+<meta name="twitter:image" content="http://image.rinkgame.com/blog/20200229/OtU6z3yVcSUt.png?imageslim">
 
 
 
@@ -129,7 +133,7 @@
 
 
 
-  <title>URL监控与报警 | GooooodMorning</title>
+  <title>项目中应用check监控与报警 | GooooodMorning</title>
   
 
 
@@ -273,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">URL监控与报警</h1>
+          <h1 class="post-title" itemprop="name headline">项目中应用check监控与报警</h1>
         
 
         <div class="post-meta">
@@ -345,9 +349,37 @@
       
 
       
-        <h2><span id="url监控与报警">URL监控与报警</span></h2><h4><span id="流程">流程</span></h4><p><img src="http://image.rinkgame.com/blog/20200301/p3T3YXf7S7Dp.png?imageslim" alt="mark"></p>
+        <h4><span id="使用工具">使用工具：</span></h4><ol>
+<li><p><a href="https://github.com/urlooker" target="_blank" rel="noopener">urlooker</a>   监控web服务可用性及访问质量，采用go语言编写，易于安装和二次开发</p>
+</li>
+<li><p><a href="https://prometheus.io/" target="_blank" rel="noopener">prometheus</a> 开源监控告警解决方案</p>
+</li>
+<li><p><a href="https://www.elastic.co/cn/" target="_blank" rel="noopener">Elasticsearch</a> 一个分布式、高扩展、高实时的搜索与数据分析引擎</p>
+</li>
+<li><p>运维平台  提供监控数据与接收prometheus报警并通知相关项目内成员</p>
+</li>
+</ol>
+<h4><span id="采集urlooker客户端">采集urlooker客户端</span></h4><p>urlooker-agent  - 进行了二次开发</p>
+<h5><span id="加入功能">加入功能</span></h5><ol>
+<li>探测url错误信息给 es</li>
+<li>生成prometheus 模板 </li>
+<li>从运维平台获取数据</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">promhttp_metric_urlooker_respon_time&#123;InstanceRegion=<span class="string">"&#123;&#123; .InstanceRegion&#125;&#125;"</span>, QuestIP=<span class="string">"&#123;&#123; .QuestIP&#125;&#125;"</span>, ProbeTarget=<span class="string">"&#123;&#123; .ProbeTarget&#125;&#125;"</span>, sid=<span class="string">"&#123;&#123; .Sid&#125;&#125;"</span>, url=<span class="string">"&#123;&#123; .Target&#125;&#125;"</span>,Domain=<span class="string">"&#123;&#123; .Domain&#125;&#125;"</span>,Project=<span class="string">"&#123;&#123; .Project&#125;&#125;"</span>,Tables=<span class="string">"&#123;&#123; .Tables&#125;&#125;"</span> &#125; &#123;&#123; .RespTime&#125;&#125;</span><br><span class="line"></span><br><span class="line">promhttp_metric_urlooker_status_code&#123;InstanceRegion=<span class="string">"&#123;&#123; .InstanceRegion&#125;&#125;"</span>, QuestIP=<span class="string">"&#123;&#123; .QuestIP&#125;&#125;"</span>, ProbeTarget=<span class="string">"&#123;&#123; .ProbeTarget&#125;&#125;"</span>, sid=<span class="string">"&#123;&#123; .Sid&#125;&#125;"</span>, url=<span class="string">"&#123;&#123; .Target&#125;&#125;"</span>,Domain=<span class="string">"&#123;&#123; .Domain&#125;&#125;"</span>,Project=<span class="string">"&#123;&#123; .Project&#125;&#125;"</span>,Tables=<span class="string">"&#123;&#123; .Tables&#125;&#125;"</span> &#125; &#123;&#123; .RespCode&#125;&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
+<h4><span id="prometheus">prometheus</span></h4><ol>
+<li>对模板进行查询生成图</li>
+</ol>
+<p><img src="http://image.rinkgame.com/blog/20200229/OtU6z3yVcSUt.png?imageslim" alt="mark"></p>
+<ol start="2">
+<li><p>告警发送给itsm</p>
+<p><img src="http://image.rinkgame.com/blog/20200301/nYKTcYeqIm5c.png?imageslim" alt="mark"></p>
+</li>
+</ol>
+<h4><span id="流程">流程</span></h4><p><img src="http://image.rinkgame.com/blog/20200301/p3T3YXf7S7Dp.png?imageslim" alt="mark"></p>
 <h5><span id="报警升级规则">报警升级规则</span></h5><p><img src="http://image.rinkgame.com/blog/20200301/CqFRqLxAcOnH.png?imageslim" alt="mark"></p>
+<h5><span id="项目人员排班">项目人员排班</span></h5><p><img src="http://image.rinkgame.com/blog/20200301/SLeL31XORYVR.png?imageslim" alt="mark"></p>
+<h5><span id="电话与企业微信通知">电话与企业微信通知</span></h5><p><img src="http://image.rinkgame.com/blog/20200301/TJnQHzF8K2Qa.png?imageslim" alt="mark"></p>
 
       
     </div>
@@ -402,11 +434,11 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文标题：</strong>
-   	<a href="http://blog.g5od.com/2020/03/01/url报警流程/index.html" title="URL监控与报警">URL监控与报警</a>
+   	<a href="http://blog.g5od.com/2020/03/01/url报警流程/index.html" title="项目中应用check监控与报警">项目中应用check监控与报警</a>
   </li>  
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://blog.g5od.com/2020/03/01/url报警流程/index.html" title="URL监控与报警">http://blog.g5od.com/2020/03/01/url报警流程/index.html</a>
+    <a href="http://blog.g5od.com/2020/03/01/url报警流程/index.html" title="项目中应用check监控与报警">http://blog.g5od.com/2020/03/01/url报警流程/index.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权： </strong>
@@ -580,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">URL监控与报警</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">报警升级规则</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">使用工具：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">采集urlooker客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">加入功能</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">prometheus</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">报警升级规则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">4.2.</span> <span class="nav-text">项目人员排班</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">4.3.</span> <span class="nav-text">电话与企业微信通知</span></a></li></ol></li></ol></div>
             
 
           </div>
