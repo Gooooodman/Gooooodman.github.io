@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="python,RabbitMQ,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="Kubernetes私有仓库拉取镜像添加secrets创建一个 Secret 来保存登录信息 regcred 名字（可自定义）  1234kubectl create secret docker-registry regcred \     --docker-server=192.168.0.59 \     --docker-username=admin \     --docker-passw">
+<meta name="description" content="环境 centos 7  安装1vi /etc/yum.repos.d/rabbitmq-erlang.repo  [rabbitmq-erlang]name=rabbitmq-erlangbaseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/21/el/7gpgcheck=1gpgkey=https://dl.bintray.com/">
+<meta name="keywords" content="python,RabbitMQ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="私有仓库拉取镜像">
-<meta property="og:url" content="http://blog.g5od.com/2020/02/29/私有仓库拉取镜像/index.html">
+<meta property="og:title" content="RabbitMQ安装与python测试">
+<meta property="og:url" content="http://blog.g5od.com/2020/02/29/RabbitMQ安装与python测试/index.html">
 <meta property="og:site_name" content="GooooodMorning">
-<meta property="og:description" content="Kubernetes私有仓库拉取镜像添加secrets创建一个 Secret 来保存登录信息 regcred 名字（可自定义）  1234kubectl create secret docker-registry regcred \     --docker-server=192.168.0.59 \     --docker-username=admin \     --docker-passw">
+<meta property="og:description" content="环境 centos 7  安装1vi /etc/yum.repos.d/rabbitmq-erlang.repo  [rabbitmq-erlang]name=rabbitmq-erlangbaseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/21/el/7gpgcheck=1gpgkey=https://dl.bintray.com/">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://image.rinkgame.com/blog/20190720/nXFTbbgjHe3f.png?imageslim">
-<meta property="og:image" content="http://image.rinkgame.com/blog/20190720/EqiL9o5Wu8Xu.png?imageslim">
-<meta property="og:updated_time" content="2019-07-20T08:54:44.259Z">
+<meta property="og:updated_time" content="2020-02-29T14:10:09.184Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="私有仓库拉取镜像">
-<meta name="twitter:description" content="Kubernetes私有仓库拉取镜像添加secrets创建一个 Secret 来保存登录信息 regcred 名字（可自定义）  1234kubectl create secret docker-registry regcred \     --docker-server=192.168.0.59 \     --docker-username=admin \     --docker-passw">
-<meta name="twitter:image" content="http://image.rinkgame.com/blog/20190720/nXFTbbgjHe3f.png?imageslim">
+<meta name="twitter:title" content="RabbitMQ安装与python测试">
+<meta name="twitter:description" content="环境 centos 7  安装1vi /etc/yum.repos.d/rabbitmq-erlang.repo  [rabbitmq-erlang]name=rabbitmq-erlangbaseurl=https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/21/el/7gpgcheck=1gpgkey=https://dl.bintray.com/">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.g5od.com/2020/02/29/私有仓库拉取镜像/">
+  <link rel="canonical" href="http://blog.g5od.com/2020/02/29/RabbitMQ安装与python测试/">
 
 
 
 
 
-  <title>私有仓库拉取镜像 | GooooodMorning</title>
+  <title>RabbitMQ安装与python测试 | GooooodMorning</title>
   
 
 
@@ -255,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.g5od.com/2020/02/29/私有仓库拉取镜像/">
+    <link itemprop="mainEntityOfPage" href="http://blog.g5od.com/2020/02/29/RabbitMQ安装与python测试/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="GooooodMorning">
@@ -272,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">私有仓库拉取镜像</h1>
+          <h1 class="post-title" itemprop="name headline">RabbitMQ安装与python测试</h1>
         
 
         <div class="post-meta">
@@ -284,7 +282,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-29T11:18:30+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-29T22:07:41+08:00">
                 2020-02-29
               </time>
             
@@ -307,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/kubernetes/" itemprop="url" rel="index">
-                    <span itemprop="name">kubernetes</span>
+                  <a href="/categories/消息队列/" itemprop="url" rel="index">
+                    <span itemprop="name">消息队列</span>
                   </a>
                 </span>
 
@@ -344,16 +342,28 @@
       
 
       
-        <h1><span id="kubernetes私有仓库拉取镜像添加secrets">Kubernetes私有仓库拉取镜像添加secrets</span></h1><h3><span id="创建一个-secret-来保存登录信息">创建一个 Secret 来保存登录信息</span></h3><blockquote>
-<font color="red">regcred 名字（可自定义）</font>
+        <h4><span id="环境">环境</span></h4><blockquote>
+<p>centos 7</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kubectl create secret docker-registry regcred \</span><br><span class="line">     --docker-server=192.168.0.59 \</span><br><span class="line">     --docker-username=admin \</span><br><span class="line">     --docker-password=admin</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@tlpx01 harbor_secret]# kubectl get secret</span><br><span class="line">NAME                  TYPE                                  DATA   AGE</span><br><span class="line">default-token-s8sg8   kubernetes.io/service-account-token   3      7h47m</span><br><span class="line">regcred               kubernetes.io/dockerconfigjson        1      21s</span><br></pre></td></tr></table></figure>
-<h3><span id="harbor-仓库设置">Harbor 仓库设置</span></h3><p><img src="http://image.rinkgame.com/blog/20190720/nXFTbbgjHe3f.png?imageslim" alt="mark"></p>
+<h4><span id="安装">安装</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/yum.repos.d/rabbitmq-erlang.repo</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[rabbitmq-erlang]<br>name=rabbitmq-erlang<br>baseurl=<a href="https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/21/el/7" target="_blank" rel="noopener">https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/21/el/7</a><br>gpgcheck=1<br>gpgkey=<a href="https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc" target="_blank" rel="noopener">https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc</a><br>repo_gpgcheck=0<br>enabled=1</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install erlang socat -y</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://dl.bintray.com/rabbitmq/all/rabbitmq-server/3.7.18/rabbitmq-server-3.7.18-1.el7.noarch.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start rabbitmq-server</span><br><span class="line">systemctl enable rabbitmq-server</span><br><span class="line">systemctl status rabbitmq-server</span><br></pre></td></tr></table></figure>
+<p>安装ui插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq-plugins enable rabbitmq_management</span><br><span class="line">chown -R rabbitmq:rabbitmq /var/lib/rabbitmq/</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h3><span id="拉取镜像yaml-设置">拉取镜像yaml 设置</span></h3><p><img src="http://image.rinkgame.com/blog/20190720/EqiL9o5Wu8Xu.png?imageslim" alt="mark"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-deploy-v3</span><br><span class="line">  namespace: testing</span><br><span class="line">  labels:</span><br><span class="line">    app: k8s-nginx-v3</span><br><span class="line">spec:</span><br><span class="line">  replicas: 1</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      app: k8s-nginx-v3</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: k8s-nginx-v3</span><br><span class="line">      annotations:</span><br><span class="line">        app: nginx-clouster</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: nginx</span><br><span class="line">        image: 192.168.0.59/good/nginx:latest</span><br><span class="line">        imagePullPolicy: IfNotPresent</span><br><span class="line">        resources:</span><br><span class="line">          limits:</span><br><span class="line">            cpu: 300m</span><br><span class="line">            memory: 3000Mi</span><br><span class="line">          requests:</span><br><span class="line">            cpu: 100m</span><br><span class="line">            memory: 100Mi</span><br><span class="line">        ports:</span><br><span class="line">        - containerPort: 80</span><br><span class="line">      imagePullSecrets:</span><br><span class="line">        - name: regcred</span><br></pre></td></tr></table></figure>
-<h3><span id="查看">查看</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@tlpx01 pods]# kubectl get pod -n testing</span><br><span class="line">NAME                               READY   STATUS    RESTARTS   AGE</span><br><span class="line">nginx-deploy-v3-68668fdd8b-b69tx   1/1     Running   0          12m</span><br></pre></td></tr></table></figure>
+<p>创建账号授权</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl add_user admin rabbitmq</span><br><span class="line">rabbitmqctl set_user_tags admin administrator</span><br><span class="line">rabbitmqctl set_permissions -p / admin &quot;.*&quot; &quot;.*&quot; &quot;.*&quot;</span><br><span class="line"></span><br><span class="line">systemctl restart rabbitmq-server</span><br></pre></td></tr></table></figure>
+<p>关闭防火墙</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -F</span><br></pre></td></tr></table></figure>
+<h4><span id="登陆">登陆</span></h4><p><a href="http://ip:15672" target="_blank" rel="noopener">http://ip:15672</a>  输入账号密码 admin/rabbitmq</p>
+<h4><span id="python测试">python测试</span></h4><p>生产者</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python   </span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*- </span></span><br><span class="line"><span class="keyword">import</span> pika</span><br><span class="line"><span class="comment">#连上rabbitMQ</span></span><br><span class="line">connection=pika.BlockingConnection(pika.ConnectionParameters(<span class="string">'localhost'</span>))</span><br><span class="line">channel=connection.channel()</span><br><span class="line"></span><br><span class="line"><span class="comment">#声明queue</span></span><br><span class="line">channel.queue_declare(queue=<span class="string">'hello1'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#n RabbitMQ a message can never be sent directly to the queue,it always needs to go through an exchange.</span></span><br><span class="line"><span class="comment">#向队列里发数据</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line">data = json.dumps(&#123;<span class="string">"a"</span>:<span class="number">1</span>&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">channel.basic_publish(exchange=<span class="string">''</span>,</span><br><span class="line">                      routing_key=<span class="string">'hello1'</span>,</span><br><span class="line">                      body=data)</span><br><span class="line">print(<span class="string">"[x]Sent'HelloWorld!'"</span>)</span><br><span class="line">connection.close()</span><br></pre></td></tr></table></figure>
+<p>消费者</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> poka</span><br><span class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(host=<span class="string">'127.0.0.1'</span>, port=<span class="number">5672</span>))</span><br><span class="line">channel = connection.channel()</span><br><span class="line">channel.queue_declare(queue=<span class="string">'hello1'</span>)</span><br><span class="line"><span class="comment">#回调函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">callback</span><span class="params">(ch, method, properties, body)</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">callback</span><span class="params">(ch, method, properties, body)</span>:</span></span><br><span class="line"></span><br><span class="line">channel.basic_consume(queue=<span class="string">"hello1"</span>,auto_ack=<span class="keyword">True</span>,on_message_callback=callback)</span><br><span class="line"><span class="comment">#监听</span></span><br><span class="line">channel.start_consuming()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -408,11 +418,11 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文标题：</strong>
-   	<a href="http://blog.g5od.com/2020/02/29/私有仓库拉取镜像/index.html" title="私有仓库拉取镜像">私有仓库拉取镜像</a>
+   	<a href="http://blog.g5od.com/2020/02/29/RabbitMQ安装与python测试/index.html" title="RabbitMQ安装与python测试">RabbitMQ安装与python测试</a>
   </li>  
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://blog.g5od.com/2020/02/29/私有仓库拉取镜像/index.html" title="私有仓库拉取镜像">http://blog.g5od.com/2020/02/29/私有仓库拉取镜像/index.html</a>
+    <a href="http://blog.g5od.com/2020/02/29/RabbitMQ安装与python测试/index.html" title="RabbitMQ安装与python测试">http://blog.g5od.com/2020/02/29/RabbitMQ安装与python测试/index.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权： </strong>
@@ -427,6 +437,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/RabbitMQ/" rel="tag"># RabbitMQ</a>
+          
+        </div>
+      
 
       
       
@@ -436,8 +454,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/27/d3-v5-拖动-颜色/" rel="next" title="d3 v5 拖动+颜色">
-                <i class="fa fa-chevron-left"></i> d3 v5 拖动+颜色
+              <a href="/2020/02/29/ingress-https/" rel="next" title="ingress+https">
+                <i class="fa fa-chevron-left"></i> ingress+https
               </a>
             
           </div>
@@ -446,8 +464,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/02/29/ingress-https/" rel="prev" title="ingress+https">
-                ingress+https <i class="fa fa-chevron-right"></i>
+              <a href="/2020/02/29/Docker-安装单机consul与python-API注册与注销/" rel="prev" title="Docker 安装单机consul与python API注册与注销">
+                Docker 安装单机consul与python API注册与注销 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -582,7 +600,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Kubernetes私有仓库拉取镜像添加secrets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">创建一个 Secret 来保存登录信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.2.</span> <span class="nav-text">Harbor 仓库设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.3.</span> <span class="nav-text">拉取镜像yaml 设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.4.</span> <span class="nav-text">查看</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">登陆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">python测试</span></a></li></ol></div>
             
 
           </div>
